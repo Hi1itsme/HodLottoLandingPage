@@ -5,6 +5,7 @@ import styles from '../page.module.css';
 
 export default function SoulboundExplainedPage() {
   return (
+    
     // Using the main layout styles for consistency
     <main className={styles.main}>
       <section className={styles.section}> {/* Wrap content in a section */}
@@ -101,6 +102,19 @@ export default function SoulboundExplainedPage() {
           <Link href="/" className={styles.buttonSecondary}>Back to Home</Link>
         </p>
       </section>
+      <section className={styles.hero}>
+  <div className={styles.heroContent}>
+    <h1 className={styles.heroTitle}>Welcome to HODLOTTO</h1>
+    <p className={styles.heroDescription}>
+      Revolutionizing the lottery system with NFT-powered participation and rewards.
+    </p>
+    <div className={styles.ctaButtons}>
+      <Link href="/get-started" className={styles.buttonPrimary}>Get Started</Link>
+      <Link href="/about" className={styles.buttonSecondary}>Learn More</Link>
+    </div>
+  </div>
+</section>
+
     </main>
   );
 }
