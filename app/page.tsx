@@ -1,11 +1,11 @@
-// app/page.tsx
+// app/page.tsx (Simplified Version)
 import NavBar from '../components/NavBar';
 import Link from 'next/link';
 import styles from './page.module.css';
+// No Image import needed
 
 export default function LandingPage() {
   return (
-    
     <main className={styles.main}>
       <NavBar />
       {/* --- Hero Section --- */}
@@ -23,7 +23,9 @@ export default function LandingPage() {
       </section>
 
       {/* --- Features Section --- */}
+      {/* This section gets the background via CSS */}
       <section className={styles.features}>
+        {/* This title needs styling for contrast over the background */}
         <h2 className={styles.sectionTitle}>The HODLOTTO Advantage</h2>
         <div className={styles.featuresGrid}>
           <div className={styles.featureCard}>
@@ -35,6 +37,7 @@ export default function LandingPage() {
             <p>Choose from different NFT tiers to increase your chances of winning.</p>
           </div>
           <div className={styles.featureCard}>
+            {/* Ensure NO Image component is here */}
             <h3>⚖️ Weighted Advantage</h3>
             <p>Higher-tier NFTs grant more entries, boosting your winning chances.</p>
           </div>

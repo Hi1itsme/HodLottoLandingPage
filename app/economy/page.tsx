@@ -1,210 +1,137 @@
-// app/economy/page.tsx
-import Image from 'next/image';
+// app/economy/page.tsx (Corrected Version)
+import NavBar from '@/components/NavBar';
 import Link from 'next/link';
-// Import styles from the MAIN page.module.css (note the '../')
+import Image from 'next/image';
 import styles from '../page.module.css';
 
-// Define the tier data - easier to manage here
 const tierData = [
   { tier: 0, weight: 1, efficiency: 'Base efficiency' },
-  { tier: 1, weight: 2, efficiency: '10% more efficient than Tier 0' },
-  { tier: 2, weight: 4, efficiency: '20% more efficient than Tier 0' },
-  { tier: 3, weight: 8, efficiency: '30% more efficient than Tier 0' },
-  { tier: 4, weight: 16, efficiency: '40% more efficient than Tier 0' },
-  { tier: 5, weight: 32, efficiency: '50% more efficient than Tier 0' },
-  { tier: 6, weight: 64, efficiency: '60% more efficient than Tier 0' },
-  { tier: 7, weight: 128, efficiency: '70% more efficient than Tier 0' },
-  { tier: 8, weight: 256, efficiency: '80% more efficient than Tier 0' },
-  { tier: 9, weight: 512, efficiency: '90% more efficient than Tier 0' },
+  { tier: 1, weight: 2, efficiency: '10% more efficient' },
+  { tier: 2, weight: 4, efficiency: '20% more efficient' },
+  { tier: 3, weight: 8, efficiency: '30% more efficient' },
+  { tier: 4, weight: 16, efficiency: '40% more efficient' },
+  { tier: 5, weight: 32, efficiency: '50% more efficient' },
+  // Add more tiers if needed, up to 9 based on original text
 ];
 
 export default function EconomyPage() {
   return (
-    <main className={styles.main}>
-      {/* --- Hero Image Section --- */}
-      <section className={styles.hero}>
-        <Image
-          src="/spaceman_in_space.png"
-          alt="HodLotto Economy - Astronaut in Space"
-          fill
-          style={{ objectFit: 'cover' }}
-          priority
-        />
-        <div className={styles.heroContent}>
-          <h1 className={styles.heroTitle}>The HODLOTTO Economy</h1>
-          <p className={styles.heroDescription}>
-            Explore the economic mechanics powering our NFT-based lottery ecosystem.
+    <>
+      <NavBar />
+      <main className={styles.main}>
+        {/* --- Hero Section --- */}
+        <section className={styles.hero}>
+           {/* Ensure spaceman_bank.png is in /public */}
+          <Image
+            src="/spaceman_bank.png"
+            alt="HODLOTTO Economy Background" // Updated Alt Text
+            fill
+            style={{ objectFit: 'cover' }}
+            priority
+          />
+          <div className={styles.heroContent}>
+            <h1 className={styles.heroTitle} style={{ textDecoration: 'none' }}>The HODLOTTO Economy</h1>
+            <p className={styles.heroDescription}>
+              Explore the mechanics that power sustainable value and continuous rewards.
+            </p>
+          </div>
+        </section>
+
+        {/* --- Core Economic Principles --- */}
+        <section className={styles.section}>
+           <h2 className={styles.sectionTitle}>Core Economic Principles</h2>
+           <p className={styles.infoParagraph}>
+              HODLOTTO's economy prioritizes true utility over speculation. The value of HODLOTTO NFTs stems directly from their permanent lottery entries, the weighted chance mechanisms based on strategic tier selection, and the compounding effect of holding multiple entries over time.
+           </p>
+        </section>
+
+        {/* --- Treasury Management --- */}
+        {/* Moved Treasury section up for better flow before Tiers/Tokens */}
+        <section className={styles.section}>
+           <h2 className={styles.sectionTitle}>Balanced Treasury Management</h2>
+           <p className={styles.infoParagraph}>
+              A balanced treasury ensures the platform's longevity and growth. It systematically receives all minting proceeds, maintains a robust reserve for prize pools, strategically funds ongoing ecosystem development and operations, and supports community initiatives, creating a sustainable economic loop.
+           </p>
+        </section>
+
+        {/* --- NFT Tiers and Efficiency --- */}
+        <section className={styles.section}>
+          <h2 className={styles.sectionTitle}>NFT Tier Efficiency</h2>
+          {/* Added intro paragraph */}
+          <p className={styles.infoParagraph}>
+             While higher tiers require larger investments, they offer greater cost efficiency based on entry weight per investment unit:
           </p>
-        </div>
-      </section>
-      
-      {/* --- Core Economic Principles --- */}
-      <section className={styles.section}>
-        <h2 className={styles.contentHeading}>Core Economic Principles</h2>
-        <p>HODLOTTO NFTs derive value from:</p>
-        <ul className={styles.contentList}>
-          <li>Permanent lottery entry utility</li>
-          <li>Weighted chance mechanisms</li>
-          <li>Strategic tier selection</li>
-          <li>Compounding entry effects</li>
-        </ul>
-      </section>
-
-      {/* --- Three-Token Ecosystem --- */}
-      <section className={styles.section}>
-        <h2 className={styles.contentHeading}>Three-Token Ecosystem</h2>
-        <h3 className={styles.contentSubHeading}>Native Blockchain Currency (e.g., ETH)</h3>
-        <ul className={styles.contentList}>
-          <li>Used for base minting operations</li>
-          <li>Accessible to newcomers</li>
-          <li>Provides liquidity for the treasury</li>
-        </ul>
-
-        <h3 className={styles.contentSubHeading}>HODL Token</h3>
-        <ul className={styles.contentList}>
-          <li>Primary utility token</li>
-          <li>Used for premium tier minting</li>
-          <li>Provides governance rights (planned)</li>
-          <li>Benefits from deflationary mechanics</li>
-        </ul>
-
-        <h3 className={styles.contentSubHeading}>LOTTO Token</h3>
-        <ul className={styles.contentList}>
-          <li>Secondary ecosystem token</li>
-          <li>Used for special promotions and events</li>
-          <li>Earned through participation</li>
-          <li>Enables community rewards</li>
-        </ul>
-      </section>
-
-      {/* --- Treasury Management --- */}
-      <section className={styles.section}>
-        <h2 className={styles.contentHeading}>Balanced Treasury Management</h2>
-        <p>The HODLOTTO treasury:</p>
-        <ul className={styles.contentList}>
-          <li>Receives all minting proceeds</li>
-          <li>Maintains the prize pool reserve</li>
-          <li>Funds ecosystem development</li>
-          <li>Ensures long-term sustainability</li>
-        </ul>
-      </section>
-
-      {/* --- NFT Tier Economics --- */}
-      <section className={styles.section}>
-        <h2 className={styles.contentHeading}>NFT Tier Economics</h2>
-        <h3 className={styles.contentSubHeading}>Investment Efficiency</h3>
-        <p>Higher tiers offer greater efficiency per investment unit:</p>
-
-        {/* --- Table for Tier Data --- */}
-        <div className={styles.tableContainer}>
-          <table className={styles.economyTable}>
-            <thead>
-              <tr>
-                <th>Tier</th>
-                <th>Entry Weight</th>
-                <th>Cost Efficiency</th>
-              </tr>
-            </thead>
-            <tbody>
-              {tierData.map((item) => (
-                <tr key={item.tier}>
-                  <td>{item.tier}</td>
-                  <td>{item.weight}</td>
-                  <td>{item.efficiency}</td>
+          <div className={styles.tableContainer}>
+            <table className={styles.economyTable}>
+              <thead>
+                <tr>
+                  <th>Tier</th>
+                  <th>Entry Weight</th>
+                  <th>Efficiency</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
+              </thead>
+              <tbody>
+                {tierData.map(({ tier, weight, efficiency }) => (
+                  // Added required unique key prop
+                  <tr key={tier}>
+                    <td>{tier}</td>
+                    <td>{weight}</td>
+                    <td>{efficiency}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        {/* --- Three-Token Ecosystem (Using Feature Cards) --- */}
+        <section className={styles.section}>
+          <h2 className={styles.sectionTitle}>Three-Token Ecosystem</h2>
+          {/* Optional: Add intro paragraph here if desired */}
+          {/* <p className={styles.infoParagraph}>The ecosystem utilizes three distinct tokens...</p> */}
+          <div className={styles.featuresGrid} style={{marginTop: '1rem'}}> {/* Reduced top margin */}
+            <div className={styles.featureCard}>
+              <h3>Native Token (ETH)</h3>
+              <p>Base liquidity for minting operations and prizes.</p>
+            </div>
+            <div className={styles.featureCard}>
+              <h3>HODL Token</h3>
+              <p>Main utility token for premium NFTs and governance.</p>
+            </div>
+            <div className={styles.featureCard}>
+              <h3>LOTTO Token</h3>
+              <p>Secondary token for community rewards and events.</p>
+            </div>
+          </div>
+        </section>
+
+        {/* --- Prize Pool Mechanics --- */}
+        <section className={styles.section}>
+          <h2 className={styles.sectionTitle}>Prize Pool Mechanics</h2>
+          {/* Removed intro <p> tag */}
+          <ul className={styles.contentList}>
+            <li>70% Minting proceeds</li>
+            <li>10% Secondary royalties</li>
+            <li>Community contributions</li>
+            {/* Add more details from original text if needed */}
+          </ul>
+        </section>
+
+        {/* --- Sustainability and Growth --- */}
+        <section className={styles.section}>
+          <h2 className={styles.sectionTitle}>Sustainability & Growth</h2>
+          {/* Applied consistent paragraph style */}
+          <p className={styles.infoParagraph}>
+             Long-term sustainability is driven by compounding participation, strategic treasury management, and continuous reinvestment into community development.
+          </p>
+        </section>
+
+        {/* --- CTA back to Home --- */}
+        {/* Using div instead of .cta section for simplicity */}
+        <div style={{ margin: '2rem auto', paddingBottom: '2rem', textAlign: 'center' }}>
+           <Link href="/" className={styles.buttonPrimary}>Back to Home</Link>
         </div>
-
-        <p style={{ marginTop: '1rem' }}>Efficiency calculated based on entry weight per investment unit.</p>
-
-        <h3 className={styles.contentSubHeading}>Pricing Strategy</h3>
-        <p>HODLOTTO's tier pricing follows a strategic curve that:</p>
-        <ul className={styles.contentList}>
-          <li>Rewards higher commitment</li>
-          <li>Creates natural entry points</li>
-          <li>Balances accessibility with exclusivity</li>
-          <li>Adjusts based on ecosystem growth</li>
-        </ul>
-      </section>
-
-      {/* --- Prize Pool Mechanics --- */}
-      <section className={styles.section}>
-        <h2 className={styles.contentHeading}>Prize Pool Mechanics</h2>
-        <h3 className={styles.contentSubHeading}>Prize Pool Formation</h3>
-        <p>Formed from:</p>
-        <ul className={styles.contentList}>
-          <li>70% of all minting proceeds</li>
-          <li>10% of secondary market royalties (HODL/LOTTO tokens)</li>
-          <li>Strategic treasury allocations</li>
-          <li>Sponsor contributions (special events)</li>
-        </ul>
-
-        <h3 className={styles.contentSubHeading}>Distribution Model (Standard Weekly)</h3>
-        <ul className={styles.contentList}>
-          <li>85% to the primary winner</li>
-          <li>10% to secondary winners</li>
-          <li>5% to the community development fund</li>
-        </ul>
-        <p>Special event drawings may have custom distributions.</p>
-      </section>
-
-      {/* --- Economic Sustainability --- */}
-      <section className={styles.section}>
-        <h2 className={styles.contentHeading}>Economic Sustainability</h2>
-        <h3 className={styles.contentSubHeading}>Continuous Growth Model</h3>
-        <p>Permanent entries create:</p>
-        <ul className={styles.contentList}>
-          <li>Increasing total entry pool</li>
-          <li>Growing prize pools</li>
-          <li>Natural scarcity of winning probability</li>
-          <li>Long-term incentive for early participation</li>
-        </ul>
-
-        <h3 className={styles.contentSubHeading}>Treasury Allocation</h3>
-        <ul className={styles.contentList}>
-          <li>70% to prize pools</li>
-          <li>15% to development and operations</li>
-          <li>10% to marketing and growth</li>
-          <li>5% to community initiatives</li>
-        </ul>
-      </section>
-
-      {/* --- Future Economic Developments --- */}
-      <section className={styles.section}>
-        <h2 className={styles.contentHeading}>Future Economic Developments</h2>
-        <p>Plans include:</p>
-        <ul className={styles.contentList}>
-          <li>Staking mechanisms</li>
-          <li>DAO governance for treasury</li>
-          <li>Prize pool diversification</li>
-          <li>Strategic partnerships</li>
-        </ul>
-      </section>
-
-      {/* --- Participation Strategy --- */}
-      <section className={styles.section}>
-        <h2 className={styles.contentHeading}>Participation Strategy</h2>
-        <h3 className={styles.contentSubHeading}>For Individual Participants</h3>
-        <ul className={styles.contentList}>
-          <li>Entry Strategy: Balance tier and quantity.</li>
-          <li>Reinvestment Strategy: Use winnings to grow position.</li>
-          <li>Diversification Strategy: Combine tiers for coverage.</li>
-        </ul>
-
-        <h3 className={styles.contentSubHeading}>For Groups/DAOs</h3>
-        <ul className={styles.contentList}>
-          <li>Pooling Strategy: Collective entry to higher tiers.</li>
-          <li>Distribution Strategy: Fair reward sharing.</li>
-          <li>Governance Strategy: Collaborative tier selection.</li>
-        </ul>
-      </section>
-      
-      {/* Back to Home Button */}
-      <p style={{ marginTop: '2rem', textAlign: 'center' }}>
-        <Link href="/" className={styles.buttonSecondary}>Back to Home</Link>
-      </p>
-    </main>
+      </main>
+    </>
   );
 }
