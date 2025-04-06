@@ -1,10 +1,14 @@
+/* app/globals.css */
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+/* --- Theme Variables --- */
 :root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
+  /* Fallback color */
   --background-end-rgb: 255, 255, 255;
 }
 
@@ -12,16 +16,39 @@
   :root {
     --foreground-rgb: 255, 255, 255;
     --background-start-rgb: 0, 0, 0;
+    /* Fallback color */
     --background-end-rgb: 0, 0, 0;
   }
 }
 
+/* --- Global Base Styles --- */
+html,
+body {
+  height: 100%;
+  /* Removed any transform/perspective/filter resets */
+}
+
 body {
   color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+
+  /* Fallback background color */
+  background-color: rgb(var(--background-start-rgb));
+
+  /* Background Image - Covers screen, Scrolls with page */
+  background-image: url('/HodLotto_Background_1.jpeg');
+  /* Ensure name is correct! */
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+  /* Scrolls with page (default) */
+  background-position: center center;
+  /* Center the image */
+  background-size: cover;
+  /* <<< Fill screen (will crop tall image) */
+
+  min-height: 100vh;
+  /* Ensure body is at least viewport height */
+
+  /* Removed any transform/perspective/filter resets */
 }
+
+/* Add any other global base styles below */
